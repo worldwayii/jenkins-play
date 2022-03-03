@@ -12,7 +12,7 @@ pipeline {
             steps {
                 pwsh(script: 'docker imaaages -a')
                 pwsh(script: """
-                    cd azure-vote/
+                    cd jenkins-play/
                     docker images -a
                     docker build -t jenkins-pipeline .
                     docker images -a
