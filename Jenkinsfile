@@ -10,7 +10,7 @@ pipeline {
 
         stage('Docker build') {
             steps {
-                pwsh(script: 'docker imaaages -a')
+                pwsh(script: 'docker images -a')
                 pwsh(script: """
                     cd jenkins-play/
                     docker images -a
