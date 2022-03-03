@@ -1,16 +1,16 @@
 version: '3'
 services:
-  jenkins-play-back:
+  azure-vote-back:
     image: redis
-    container_name: jenkins-play-back
+    container_name: azure-vote-back
     ports:
         - "6379:6379"
 
-  jenkins-play-front:
-    build: ./jenkins-play
-    image: jenkins-play-front
-    container_name: jenkins-play-front
+  azure-vote-front:
+    build: ./azure-vote
+    image: azure-vote-front
+    container_name: azure-vote-front
     environment:
-      REDIS: jenkins-play-back
+      REDIS: azure-vote-back
     ports:
         - "8000:80"
