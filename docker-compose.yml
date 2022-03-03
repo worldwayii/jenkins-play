@@ -1,0 +1,16 @@
+version: '3'
+services:
+  jenkins-play-back:
+    image: redis
+    container_name: jenkins-play-back
+    ports:
+        - "6379:6379"
+
+  jenkins-play-front:
+    build: ./jenkins-play
+    image: jenkins-play-front
+    container_name: jenkins-play-front
+    environment:
+      REDIS: jenkins-play-back
+    ports:
+        - "8000:80"
