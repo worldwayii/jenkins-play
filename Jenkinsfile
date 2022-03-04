@@ -28,11 +28,14 @@ pipeline {
                 """)
             }
             post {
-                echo "Test app is running"
+                suvess{
+                    echo "Test started running"
+                }
+                failure {
+                    echo "Test app failed"
+                }
             }
-            failure {
-                echo "Test app failed"
-            }
+            
         }
         stage('Run Tests'){
             steps {
