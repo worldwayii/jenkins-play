@@ -20,5 +20,34 @@ pipeline {
                 """)
             }
         }
+        stage('Start test app') {
+            steps {
+                sh(script: """
+                  docker-composer up -d
+                  ./scripts/test_container.ps1
+                """)
+            }
+            post {
+                echo "Test app is running"
+            }
+            failure {
+                echo "Test app failed"
+            }
+        }
+        stage('Run Tests'){
+            steps {
+                sh(script: """
+                  pytest .tests/test_sample.py
+                """)
+            }
+        }
+        stage('Stop Test app') {
+            steps {
+                sh(script: """
+                  docker-compose down
+                """)
+            }
+        }
+      }
     }
 }
