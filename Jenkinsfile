@@ -28,7 +28,7 @@ pipeline {
                 """)
             }
             post {
-                suvess{
+                success{
                     echo "Test started running"
                 }
                 failure {
