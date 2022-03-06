@@ -22,6 +22,10 @@ pipeline {
         }
         stage('Start test app') {
             steps {
+                sh(script: """ 
+                   chmod +x -R ${env.WORKSPACE}"
+                """)
+                
                 sh(script: """
                   docker-compose up -d
                   ./scripts/test_container.ps1
