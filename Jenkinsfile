@@ -21,10 +21,16 @@ pipeline {
             }
         }
         stage('Start test app') {
-            steps {
+            // steps {
+            //     sh(script: """
+            //       docker-compose up -d
+
+            //       ./scripts/test_container.sh
+            //     """)
+            // }
+           steps {
                 sh(script: """
-                 sudo docker-compose up -d
-                  ./scripts/test_container.sh
+                 whoami
                 """)
             }
             post {
